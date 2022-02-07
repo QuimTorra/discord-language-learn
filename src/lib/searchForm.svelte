@@ -1,5 +1,6 @@
 <script lang=ts>
   export let loading = false;
+  export let results = []
 
   let language
   let native
@@ -29,6 +30,7 @@
       .then(res => { return res.json() })
       .then(data => {
         loading = false
+        results = data
         console.log(data)
       })
   }
@@ -38,6 +40,7 @@
       .then(res => { return res.json() })
       .then(data => {
         loading = false
+        results = data
         console.log(data)
       })
   }
@@ -47,6 +50,7 @@
       .then(res => { return res.json() })
       .then(data => {
         loading = false
+        results = data
         console.log(data)
       })
   }
@@ -81,25 +85,19 @@
 
 <style>
   .form {
-    margin-top: .5rem;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
   }
   .smalls {
-    margin-bottom: .25rem;
     display: flex;
     justify-content: space-evenly;
 
   }
   .label {
     display: flex;
-    flex-direction: column;
     align-items: center;
     font-weight: bold;
-  }
-  span {
-    margin-bottom: .125rem;
   }
 
   select {
@@ -137,6 +135,22 @@
   button:hover, button:focus-visible {
     background-color: var(--accent);
     cursor: pointer;
+  }
+
+  @media(max-width: 800px){
+    .label {
+      flex-direction: column;
+    }
+    .form {
+      align-items: flex-end;
+    }
+  }
+
+  @media(max-width: 500px){
+    .form {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
 </style>
