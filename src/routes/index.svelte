@@ -1,12 +1,16 @@
 <script>
   import SearchForm from "../lib/searchForm.svelte"
 
+  let loading
   let results = []
 </script>
 
 <div class="container">
-  <SearchForm />
+  <SearchForm bind:loading />
 </div>
+{#if loading}
+  <h1>LOADING...</h1>
+{/if}
 
 <style>
   :global(:root) {
@@ -15,7 +19,9 @@
     --text-color: #E0E2DB;
     --primary: #D3EFBD;
     --accent: #7692FF;
+    --text-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
+    font-family: var(--text-font);
   }
 
   :root {
